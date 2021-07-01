@@ -50,10 +50,8 @@ repositories {
     mavenCentral()
 }
 
-
 group = "com.github.kimble.oidccliclient"
 version = "1.0.0-SNAPSHOT"
-
 
 plugins.withType<TestLoggerPlugin> {
     configure<TestLoggerExtension> {
@@ -75,5 +73,3 @@ publishing {
 tasks.wrapper {
     distributionType = Wrapper.DistributionType.ALL
 }
-
-

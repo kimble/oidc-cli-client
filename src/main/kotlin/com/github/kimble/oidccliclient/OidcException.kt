@@ -14,5 +14,4 @@ sealed class OidcException(message: String, cause: Exception? = null) : IllegalS
     class LogoutFailed(cause: Exception) : OidcException("Logout failed", cause)
 
     class TokenExchangeFailed(cause: Exception) : OidcException("Code for token exchange failed", cause)
-
 }

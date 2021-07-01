@@ -45,28 +45,28 @@ class OidcClient(
         }
     }
 
-     internal fun exchangeCodeForToken(challenge: Challenge, code: CodeCallback, redirectUri: String): Tokens {
-         log.info("Exchanging code for tokens at {}", tokenUri)
+    internal fun exchangeCodeForToken(challenge: Challenge, code: CodeCallback, redirectUri: String): Tokens {
+        log.info("Exchanging code for tokens at {}", tokenUri)
 
-         return try {
-             val responseBody = postForm(
-                 uri = tokenUri,
-                 parameters = mapOf(
-                     "code_verifier" to challenge.verifierCode,
-                     "code" to code.code,
-                     "grant_type" to "authorization_code",
-                     "client_id" to clientId,
-                     "redirect_uri" to redirectUri
-                 )
-             )
+        return try {
+            val responseBody = postForm(
+                uri = tokenUri,
+                parameters = mapOf(
+                    "code_verifier" to challenge.verifierCode,
+                    "code" to code.code,
+                    "grant_type" to "authorization_code",
+                    "client_id" to clientId,
+                    "redirect_uri" to redirectUri
+                )
+            )
 
-             parseTokensFromString(responseBody)
-         } catch (ex: Exception) {
-             throw OidcException.TokenExchangeFailed(ex)
-         }
+            parseTokensFromString(responseBody)
+        } catch (ex: Exception) {
+            throw OidcException.TokenExchangeFailed(ex)
+        }
     }
 
-    private fun checkForErrors(response: HttpResponse<String>) : String {
+    private fun checkForErrors(response: HttpResponse<String>): String {
         val responseBody = response.body()
 
         return if (response.statusCode() > 299) {

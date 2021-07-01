@@ -62,6 +62,6 @@ internal class CallbackHttpServer(port: Int) : NanoHTTPD(port), AutoCloseable {
     }
 
     companion object {
-        private val log : Logger = LoggerFactory.getLogger(CallbackHttpServer::class.java)
+        private val log: Logger = LoggerFactory.getLogger(CallbackHttpServer::class.java)
     }
 }
