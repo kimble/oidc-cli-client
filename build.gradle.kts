@@ -34,12 +34,12 @@ tasks.test {
     }
 }
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "9"
 }
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(15))
+        languageVersion.set(JavaLanguageVersion.of(16))
         vendor.set(JvmVendorSpec.ADOPTOPENJDK)
     }
 }
