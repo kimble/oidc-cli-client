@@ -10,6 +10,7 @@ plugins {
     id("com.adarshr.test-logger") version "3.0.0"
     id("org.jetbrains.kotlin.jvm") version "1.5.20"
     kotlin("plugin.serialization") version "1.5.20"
+    `maven-publish`
 }
 
 val slf4jVersion = "1.7.31"
@@ -55,6 +56,14 @@ plugins.withType<TestLoggerPlugin> {
         slowThreshold = 2500
         showStackTraces = true
         showCauses = true
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+        }
     }
 }
 
