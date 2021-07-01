@@ -33,6 +33,9 @@ tasks.test {
         junitXml.required.set(true)
     }
 }
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = "11"
+}
 
 java {
     toolchain {
@@ -40,11 +43,6 @@ java {
         vendor.set(JvmVendorSpec.ADOPTOPENJDK)
     }
 }
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
-}
-
 configure<KtlintExtension> {
     version.set("0.41.0")
 }
