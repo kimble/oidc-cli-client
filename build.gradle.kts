@@ -34,14 +34,7 @@ tasks.test {
     }
 }
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "9"
-}
-
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(16))
-        vendor.set(JvmVendorSpec.ADOPTOPENJDK)
-    }
+    kotlinOptions.jvmTarget = "11"
 }
 configure<KtlintExtension> {
     version.set("0.41.0")
