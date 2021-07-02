@@ -11,9 +11,9 @@ import kotlin.text.Charsets.UTF_8
 
 internal class CallbackHttpServer(port: Int) : NanoHTTPD(port), AutoCloseable {
 
-    val redirectUri: URI = URI.create("http://localhost:$port")
-    val urlEncodedRedirectUri: String = URLEncoder.encode(redirectUri.toASCIIString(), UTF_8)
-    val future = CompletableFuture<CodeCallback>()
+    internal val redirectUri: URI = URI.create("http://localhost:$port")
+    internal val urlEncodedRedirectUri: String = URLEncoder.encode(redirectUri.toASCIIString(), UTF_8)
+    internal val future = CompletableFuture<CodeCallback>()
 
     init {
         log.info("Staring http callback server on port {}", port)

@@ -14,9 +14,7 @@ import java.net.http.HttpResponse
 
 class OidcClient(
     private val httpClient: HttpClient,
-    private val clientId: String,
-    private val tokenUri: URI,
-    private val logoutUri: URI
+    private val configuration: OidcConfiguration
 ) {
 
     private val json = Json {
@@ -25,15 +23,16 @@ class OidcClient(
 
     fun logout(tokens: Tokens) {
         try {
+            log.info("Logout started for token: {}", tokens.accessToken.jwtClaimsSet.jwtid)
             val encodedParams = goodEnoughFormEncode(
                 mapOf(
-                    "client_id" to clientId,
+                    "client_id" to configuration.clientId,
                     "refresh_token" to tokens.refreshToken.serialize()
                 )
             )
 
             val request = HttpRequest.newBuilder()
-                .uri(logoutUri)
+                .uri(configuration.logoutUri)
                 .POST(HttpRequest.BodyPublishers.ofString(encodedParams))
                 .header("Content-Type", "application/x-www-form-urlencoded")
                 .build()
@@ -46,16 +45,16 @@ class OidcClient(
     }
 
     internal fun exchangeCodeForToken(challenge: Challenge, code: CodeCallback, redirectUri: String): Tokens {
-        log.info("Exchanging code for tokens at {}", tokenUri)
+        log.info("Exchanging code for tokens at {}", configuration.tokenUri)
 
         return try {
             val responseBody = postForm(
-                uri = tokenUri,
+                uri = configuration.tokenUri,
                 parameters = mapOf(
                     "code_verifier" to challenge.verifierCode,
                     "code" to code.code,
                     "grant_type" to "authorization_code",
-                    "client_id" to clientId,
+                    "client_id" to configuration.clientId,
                     "redirect_uri" to redirectUri
                 )
             )
@@ -88,11 +87,11 @@ class OidcClient(
     fun refresh(tokens: Tokens): Tokens {
         return try {
             val responseBody = postForm(
-                uri = tokenUri,
+                uri = configuration.tokenUri,
                 parameters = mapOf(
                     "grant_type" to "refresh_token",
                     "refresh_token" to tokens.refreshToken.serialize(),
-                    "client_id" to clientId
+                    "client_id" to configuration.clientId
                 )
             )
 
