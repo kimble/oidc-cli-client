@@ -22,7 +22,7 @@ dependencies {
     api("com.nimbusds:nimbus-jose-jwt:9.11.3")
 
     testImplementation("org.slf4j:slf4j-simple:$slf4jVersion")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.7.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     testImplementation("org.assertj:assertj-core:3.20.2")
 }
 
