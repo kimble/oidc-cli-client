@@ -23,7 +23,7 @@ dependencies {
 
     testImplementation("org.slf4j:slf4j-simple:$slf4jVersion")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
-    testImplementation("org.assertj:assertj-core:3.20.2")
+    testImplementation("org.assertj:assertj-core:3.21.0")
 }
 
 tasks.test {
