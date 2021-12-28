@@ -6,7 +6,7 @@ import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
 
 plugins {
-    id("org.jlleitschuh.gradle.ktlint") version "10.1.0"
+    id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
     id("com.adarshr.test-logger") version "3.1.0"
     id("org.jetbrains.kotlin.jvm") version "1.5.20"
     kotlin("plugin.serialization") version "1.5.20"
