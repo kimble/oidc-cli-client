@@ -13,7 +13,7 @@ plugins {
     `maven-publish`
 }
 
-val slf4jVersion = "1.7.32"
+val slf4jVersion = "1.7.36"
 
 dependencies {
     implementation("org.slf4j:slf4j-api:$slf4jVersion")
