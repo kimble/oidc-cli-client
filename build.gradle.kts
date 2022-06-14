@@ -17,7 +17,7 @@ val slf4jVersion = "1.7.36"
 
 dependencies {
     implementation("org.slf4j:slf4j-api:$slf4jVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
     implementation("org.nanohttpd:nanohttpd:2.3.1")
     api("com.nimbusds:nimbus-jose-jwt:9.23")
 
