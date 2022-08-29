@@ -19,7 +19,7 @@ dependencies {
     implementation("org.slf4j:slf4j-api:$slf4jVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
     implementation("org.nanohttpd:nanohttpd:2.3.1")
-    api("com.nimbusds:nimbus-jose-jwt:9.23")
+    api("com.nimbusds:nimbus-jose-jwt:9.24.3")
 
     testImplementation("org.slf4j:slf4j-simple:$slf4jVersion")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
